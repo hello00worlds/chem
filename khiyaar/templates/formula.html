@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<p>{{ weight }}</p>
 <p>{% autoescape off %}{{ balanced }}{% endautoescape %}</p>
 <form action="/khiyaar/" method="post">
     {% csrf_token %}
