@@ -2,9 +2,11 @@
 {% block content %}
 <p>{{ weight }}</p>
 <p>{% autoescape off %}{{ balanced }}{% endautoescape %}</p>
-<form action="/khiyaar/" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+<div class="form">
+    <form action="/khiyaar/" method="post">
+        <div class="first">{% csrf_token %}</div>
+        <div class="second">{{ form }}</div>
+        <input type="submit" value="Let's go" class="submit">
+    </form>
+</div>
 {% endblock %}

@@ -1,3 +1,31 @@
+p {
+    width: 60%;
+    margin-left: 20%;
+    color: white;
+    text-align: center;
+    font-family: 'Manjari', sans-serif;
+}
+
 body {
-    background-color: blue;
+    background-color: rgb(0, 153, 255);
+}
+
+.form {
+    border-radius: 5rem;
+    width: 60%;
+    height: 4rem;
+    padding-top: 2rem;
+    margin-left: 20%;
+    background-color: white;
+    color: rgb(0, 153, 255);
+    text-align: center;
+    font-family: 'Manjari', sans-serif;
+}
+
+.submit {
+    color: white;
+    background-color: rgb(0, 153, 255);
+    border-radius: 50px;
+    font-family: 'Manjari', sans-serif;
+    height: 2rem;
 }
