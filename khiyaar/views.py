@@ -14,17 +14,34 @@ def reactionToHtml(reac, prod):
     output = output[:-3]
     return output
 
-# def weight(r, p):
-#     for fractions in map(mass_fractions, [r, p]):
-#         return {k: '{0:.3g} wt%'.format(v*100) for k, v in fractions.items()}
+def el(reac, prod):
+    elr = []
+    elp = []
+    for i in reac:
+        elr.append(Substance.from_formula(i).html_name)
+    for i in prod:
+        elp.append(Substance.from_formula(i).html_name)
+    return elr, elp
 
-def weight(element, r, p, g):
-    wet = 0
+def weight(r, p):
+    rs = []
+    ps = []
     for fractions in map(mass_fractions, [r, p]):
-        for k, v in fractions.items():
-            if k == element:
-                wet = g/v*100
-    return {k: '{0:.3g} wt%'.format(v*100*g) for k, v in fractions.items()}
+        a = mass_fractions(r)
+        b = mass_fractions(p)
+        for i in a:
+            rs.append(a[i])
+        for i in b:
+            ps.append(b[i])
+        return rs, ps
+
+# def weight(element, r, p, g):
+#     wet = 0
+#     for fractions in map(mass_fractions, [r, p]):
+#         for k, v in fractions.items():
+#             if k == element:
+#                 wet = g/v*100
+#     return {k: '{0:.3g} wt%'.format(v*100*g) for k, v in fractions.items()}
 
 
 def home(request):
@@ -32,5 +49,6 @@ def home(request):
     formula = request.POST['formula'] if request.method == 'POST' else 'H2 + O2 -> H2O'
     r = Reaction.from_string(formula)
     reac, prod = balance_stoichiometry({sub for sub in r.reac}, {sub for sub in r.prod})
-    return render(request, 'formula.html', {'form': form, 'balanced': reactionToHtml(reac, prod), 'weight': weight('H2', reac, prod, 12)})
-
+    elr, elp = el(reac, prod)
+    rs, ps = weight(reac, prod)
+    return render(request, 'formula.html', {'form': form, 'balanced': reactionToHtml(reac, prod), 'rs': rs, 'ps': ps, 'elr': elr, 'elp': elp})

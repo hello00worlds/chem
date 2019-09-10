@@ -1,7 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <p>{{ weight }}</p>
+{% for i in elr %}
+    {% for j in rs %}
+        <p>{% autoescape off %}{{ i }} --> {{j}}{% endautoescape %}</p>
+    {% endfor %}
+{% endfor %}
+<p>------------------------------------------------------</p>
+{% for i in elp %}
+    {% for j in ps %}
+        <p>{% autoescape off %}{{ i }} --> {{j}}{% endautoescape %}</p>
+    {% endfor %}
+{% endfor %}
+<p>------------------------------------------------------</p>
 <p>{% autoescape off %}{{ balanced }}{% endautoescape %}</p>
+
 <div class="form">
     <form action="/khiyaar/" method="post">
         <div class="first">{% csrf_token %}</div>
@@ -9,4 +23,5 @@
         <input type="submit" value="Let's go" class="submit">
     </form>
 </div>
+
 {% endblock %}
