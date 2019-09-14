@@ -1,26 +1,45 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<p>{{ weight }}</p>
-{% for i in elr %}
-    {% for j in rs %}
-        <p>{% autoescape off %}{{ i }} --> {{j}}{% endautoescape %}</p>
-    {% endfor %}
-{% endfor %}
-<p>------------------------------------------------------</p>
-{% for i in elp %}
-    {% for j in ps %}
-        <p>{% autoescape off %}{{ i }} --> {{j}}{% endautoescape %}</p>
-    {% endfor %}
-{% endfor %}
-<p>------------------------------------------------------</p>
-<p>{% autoescape off %}{{ balanced }}{% endautoescape %}</p>
-
+<table class="table table-dark">
+    <tbody class="table">
+        <tr>
+            <td style="text-align: center">{% autoescape off %}{{ balanced }}{% endautoescape %}</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-dark">
+    <tbody class="table">
+        <tr>
+            {% for i in elr %}
+                <td>{% autoescape off %}{{ i }}{% endautoescape %}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for i in elp %}
+                <td>{% autoescape off %}{{ i }}{% endautoescape %}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for i in rs %}
+                <td>{% autoescape off %}{{ i }}{% endautoescape %}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for i in ps %}
+                <td>{% autoescape off %}{{ i }}{% endautoescape %}</td>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
 <div class="form">
     <form action="/khiyaar/" method="post">
-        <div class="first">{% csrf_token %}</div>
-        <div class="second">{{ form }}</div>
-        <input type="submit" value="Let's go" class="submit">
+        <div>{% csrf_token %}</div>
+        <div class="input-group mb-3 form">
+                {{ form }}
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Go</button>
+            </div>
+        </div>
     </form>
 </div>
 

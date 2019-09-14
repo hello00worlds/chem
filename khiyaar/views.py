@@ -8,7 +8,7 @@ def reactionToHtml(reac, prod):
     for i in reac:
         output += f'{reac[i]} {Substance.from_formula(i).html_name} + '
     output = output[:-3]
-    output += ' => '
+    output += ' → '
     for i in prod:
         output += f'{prod[i]} {Substance.from_formula(i).html_name} + '
     output = output[:-3]
@@ -30,9 +30,9 @@ def weight(r, p):
         a = mass_fractions(r)
         b = mass_fractions(p)
         for i in a:
-            rs.append(a[i])
+            rs.append(a[i]//0.01)
         for i in b:
-            ps.append(b[i])
+            ps.append(b[i]//0.01)
         return rs, ps
 
 # def weight(element, r, p, g):

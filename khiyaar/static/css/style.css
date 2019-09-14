@@ -1,0 +1,34 @@
+body {
+    background: url(../pictures/background.jpg) no-repeat fixed;
+    background-size: cover;
+}
+
+.form {
+    margin-left: 10%;
+    width: 80%;
+}
+
+p {
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 20%;
+    width: 60%;
+    height: 4rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 0.3rem;
+    text-align: center;
+    color: white;
+}
+
+.btn {
+    background-color: white;
+}
+
+.table {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 10%;
+    width: 80%;
+    color: white;
+}
